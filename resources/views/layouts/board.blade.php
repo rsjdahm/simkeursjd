@@ -1,10 +1,11 @@
 <div class="wrapper ">
     <div class="sidebar" data-color="azure" data-background-color="black">
-        <div class="logo"><a href="https://pbb.gresikkab.go.id/espop/administrator" class="simple-text logo-mini">
-                <img height="20" src="https://pbb.gresikkab.go.id/espop//assets/img/gresik.png">
+        <div class="logo" style="cursor: pointer;">
+            <a onclick="return load('{{ route('dashboard') }}')" class="simple-text logo-mini">
+                <img height="20" src="{{ asset('assets/img/logo.png') }}">
             </a>
-            <a href="https://pbb.gresikkab.go.id/espop/administrator" class="simple-text logo-normal">
-                Admin e-SPOP
+            <a onclick="return load('{{ route('dashboard') }}')" class="simple-text logo-normal">
+                SIMKEU BLUD
             </a>
         </div>
         <div class="sidebar-wrapper">
@@ -17,9 +18,9 @@
                         <span style="padding-left: 50px;">
                             <span
                                 style="text-transform: capitalize ;font-weight: bold;font-size: 16px; white-space:normal;">{{
-                                Str::upper(Auth::user()->username) }}</span><br>
+                                Str::upper(Auth::user()->nama) }}</span><br>
                             <span style="font-size: 13px; white-space: normal;">{{
-                                Str::title(Auth::user()->level)
+                                Str::title(Auth::user()->jabatan)
                                 }}</span>
                             <b class="caret"></b>
                         </span>
@@ -106,6 +107,29 @@
                             <i class="material-icons text_align-center visible-on-sidebar-regular">more_vert</i>
                             <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
                         </button>
+                        <script>
+                            $('#minimizeSidebar').click(function() {
+                                var $btn = $(this);
+                        
+                                if (md.misc.sidebar_mini_active == true) {
+                                    $('body').removeClass('sidebar-mini');
+                                    md.misc.sidebar_mini_active = false;
+                                } else {
+                                    $('body').addClass('sidebar-mini');
+                                    md.misc.sidebar_mini_active = true;
+                                }
+                        
+                                // we simulate the window Resize so the charts will get updated in realtime.
+                                var simulateWindowResize = setInterval(function() {
+                                    window.dispatchEvent(new Event('resize'));
+                                }, 180);
+                        
+                                // we stop the simulation of Window Resize after the animations are completed
+                                setTimeout(function() {
+                                    clearInterval(simulateWindowResize);
+                                }, 1000);
+                         });
+                        </script>
                     </div>
                     <a class="navbar-brand" href="javascript:;">Dashboard</a>
                 </div>

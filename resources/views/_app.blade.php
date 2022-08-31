@@ -20,28 +20,22 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/select2.custom.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/sweetalert2.bootstrap-4.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/nprogress.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css?v=' . time()) }}" />
-    @stack('styles')
 
 </head>
 
 <body>
+    <div id="app"></div>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap-material-design.min.js') }}"></script>
     <script src="{{ asset('assets/js/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap-notify.js') }}"></script>
     <script src="{{ asset('assets/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/js/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('assets/js/material-dashboard.js') }}"></script>
     <script src="{{ asset('assets/js/nprogress.js') }}"></script>
-    @include('_script')
-    @stack('scripts')
-
-    <div id="app"></div>
-
+    <script src="{{ asset('assets/js/app.js?v=' . time()) }}"></script>
 </body>
 
 </html>
